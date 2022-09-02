@@ -204,7 +204,7 @@ func fixTitle(title string, creator string) (string, string) {
 
 	// 尝试获取卷数
 	vol := ""
-	reg := regexp.MustCompile(`[1-9]+`)
+	reg := regexp.MustCompile(`[0-9]+`)
 	results := reg.FindAllString(title, -1)
 	if len(results) > 0 {
 		vol = results[len(results)-1]
@@ -219,7 +219,7 @@ func fixTitle(title string, creator string) (string, string) {
 	title = reg.ReplaceAllString(title, "")
 
 	// 去除卷标
-	reg = regexp.MustCompile(`[1-9]+巻`)
+	reg = regexp.MustCompile(`[0-9]+巻`)
 	title = reg.ReplaceAllString(title, "")
 	title = strings.ReplaceAll(title, vol, "")
 
